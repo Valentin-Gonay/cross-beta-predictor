@@ -8,6 +8,7 @@ import utils.iupred3.iupred3_lib as iupred
 
 # EXTERN IMPORTS
 import numpy as np
+from typing import Optional
 
 
 
@@ -20,7 +21,7 @@ import numpy as np
 def get_iupred_res_df(
         dataframe, 
         sequence_col: str, 
-        ar_col : str | None = None
+        ar_col : Optional[str] = None
         ):
     '''Get the iupred score of the given sequence and store it in the proper column of 
     the given dataframe.

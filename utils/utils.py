@@ -86,17 +86,17 @@ def get_seq_from_DBfile(
     return seq_array
 
 
-def get_seq_from_FASTA(file_path):
+def get_seq_from_FASTA(file_path: str):
     '''Get all sequence and the corresponding name from a FASTA file 
-        
-    Parameters
-    ----------
-        file_path (String): The path to access to the FASTA file
-        
-    Returns
-    -------
-        (Array): An array of all the sequence and their label organized as a dictionnary (ex: [{'label': 'protein_1', 'sequence': 'ABEEGG'},{'label': 'protein_2', 'sequence':'GEDDAG'}])
+    
+    :param file_path: The path to access to the FASTA file
+    :type file_path: str 
+
+    :return: An array of all the sequence and their label organized as a dictionnary 
+    (ex: [{'label': 'protein_1', 'sequence': 'ABEEGG'},{'label': 'protein_2', 'sequence':'GEDDAG'}])
+    :rtype: list
     '''
+
     sequences_list = []
     current_sequence = ''
     current_entry = {}
@@ -143,18 +143,27 @@ def get_seq_from_FASTA(file_path):
     return sequences_list
 
 
-def get_seq_from_csv(csv_file_path, label_colname, sequence_colname):
-    '''Convert a csv file into a python dict. Use specific column names to extract information from the csv file
-        
-    Parameters
-    ----------
-        csv_file_path (String): The path and file name of the source CSV file.
-        label_colname (String): The name of the column where to get the fasta entry name/identifier.
-        sequence_colname (String): The name of the column where to get the protein sequence
-        
-    Returns
-    -------
-        (Array): The list of entry of the created fasta file. Each entry is a dictionary composed of a 'label' and a 'sequence' keys.
+
+def get_seq_from_csv(
+        csv_file_path: str, 
+        label_colname: str, 
+        sequence_colname: str
+        ):
+    '''Convert a csv file into a python dict. Use specific column names to extract information 
+    from the csv file
+    
+    :param csv_file_path: The path and file name of the source CSV file.
+    :type csv_file_path: str 
+
+    :param label_colname: The name of the column where to get the fasta entry name/identifier.
+    :type label_colname: str 
+
+    :param sequence_colname: The name of the column where to get the protein sequence
+    :type sequence_colname: str 
+
+    :return: The list of entry of the created fasta file. Each entry is a dictionary composed of a 
+    'label' and a 'sequence' keys.
+    :rtype: list
     '''
 
     # open CSV and extract informations
@@ -166,17 +175,19 @@ def get_seq_from_csv(csv_file_path, label_colname, sequence_colname):
     return entry_list
 
 
-def get_seq_from_strfasta(sequences):
+
+def get_seq_from_strfasta(sequences: str):
     '''Extract sequences from a fasta / multifasta in string format
-        
-    Parameters
-    ----------
-        sequences (String): The input sequences in fasta or multifasta in String format (not the path to the file)
-        
-    Returns
-    -------
-        (Array): An array of all the sequence and their label organized as a dictionnary (ex: [{'label': 'protein_1', 'sequence': 'ABEEGG'},{'label': 'protein_2', 'sequence':'GEDDAG'}])
+    
+    :param sequences: The input sequences in fasta or multifasta in String format 
+    (not the path to the file)
+    :type sequences: str 
+
+    :return: An array of all the sequence and their label organized as a dictionnary 
+    (ex: [{'label': 'protein_1', 'sequence': 'ABEEGG'},{'label': 'protein_2', 'sequence':'GEDDAG'}])
+    :rtype: list
     '''
+
     sequences_list = []
     current_sequence = None
     current_entry = {}
@@ -217,36 +228,67 @@ def get_seq_from_strfasta(sequences):
 
 
 # Display the result in the console
-def display_res_1_pred(entry, pred, confidence):
-    '''Display result of one prediction associated with the cluster ID with the target label is there is one, the predicted label and the confidence score.
-        
-    Parameters
-    ----------
-        entry (Dictionary): The entry used for the prediction with information about the label, the cluster id and the sequence
-        pred (Integer): The predicted label (0 for Soluble or 1 for Amyloid)
-        confidence (Float): The confidence score of the prediction (from 0.5 to 1.0)
-        
-    Returns
-    -------
-        (Dictionary): The dictionary containing all the displayed information (cluster, label, prediction, confidence score) for the given entry
+def display_res_1_pred(
+        entry: dict, 
+        pred: int, 
+        confidence: float
+        ):
+    '''Display result of one prediction associated with the cluster ID with the target label is 
+    there is one, the predicted label and the confidence score.
+    
+    :param entry: The entry used for the prediction with information about the label, the cluster 
+    id and the sequence
+    :type entry: dict 
+
+    :param pred: The predicted label (0 for Soluble or 1 for Amyloid)
+    :type pred: int 
+
+    :param confidence: The confidence score of the prediction (from 0.5 to 1.0)
+    :type confidence: float 
+
+    :return: The dictionary containing all the displayed information (cluster, label, prediction, 
+    confidence score) for the given entry
+    :rtype: dict
     '''
+
     if pred == 1:
         prediction = 'Amyloid'
     else:
         prediction = 'Soluble'
-    print('Cluster:',entry['cluster'], '\tLabel:', entry['label'], '\tPrediction:', prediction, '\tConfidence score:', confidence)
-    return {'cluster':entry['cluster'], 'label':entry['label'], 'prediction':prediction, 'confidence':confidence}
+    print(
+        'Cluster:',entry['cluster'], 
+        '\tLabel:', entry['label'], 
+        '\tPrediction:', prediction,
+        '\tConfidence score:', confidence)
+    
+    return {
+        'cluster':entry['cluster'], 
+        'label':entry['label'], 
+        'prediction':prediction, 
+        'confidence':confidence
+        }
+
 
 
 # Save the prediction result in a CSV file
-def save_res_csv(save_path, entries, col_names):
-    '''Save result in CSV format of one prediction associated with the cluster ID with the target label is there is one, the predicted label and the confidence score.
-        
-    Parameters
-    ----------
-        save_path (String): The path and name for the creation of the result file
-        entries (Array): The list of entry containing all information about the entry and its prediction results
-        col_names (Array): The list of column names for the CSV file. All given column names have to be Strings
+def save_res_csv(
+        save_path: str, 
+        entries: list, 
+        col_names: list
+        ):
+    '''Save result in CSV format of one prediction associated with the cluster ID with the target 
+    label is there is one, the predicted label and the confidence score.
+    
+    :param save_path: The path and name for the creation of the result file
+    :type save_path: str 
+
+    :param entries: The list of entry containing all information about the entry and its 
+    prediction results
+    :type entries: list 
+
+    :param col_names: The list of column names for the CSV file. All given column names 
+    have to be Strings
+    :type col_names: list 
     '''
 
     if not '.csv' in save_path:
@@ -260,24 +302,39 @@ def save_res_csv(save_path, entries, col_names):
         
         # Write data rows
         for entry in entries:
-            csv_writer.writerow([entry['cluster'], entry['label'], entry['prediction'], entry['confidence']])
+            csv_writer.writerow(
+                [entry['cluster'], 
+                 entry['label'], 
+                 entry['prediction'], 
+                 entry['confidence']])
 
     print(f'{save_path} created successfully')
 
 
-def save_amino_acid_pred_result_csv(save_path, result_list):
+def save_amino_acid_pred_result_csv(
+        save_path: str, 
+        result_list: list
+        ):
     '''Save the prediction result giving amyloidogenicity score by amino acids in a csv file
-        
-    Parameters
-    ----------
-        save_path (String): The path of the file and its name
-        result_list (Array): the list of result where every item is a dictionary containing 'prot_name', 'AA_list', 'All_sequence_pred', 'mean_list', and'AR_list' keys.  
+    
+    :param save_path: The path of the file and its name
+    :type save_path: str 
+
+    :param result_list: The list of result where every item is a dictionary containing 'prot_name', 
+    'AA_list', 'All_sequence_pred', 'mean_list', and'AR_list' keys.  
+    :type result_list: list 
     '''
 
     if not '.csv' in save_path:
         save_path += '.csv'
 
-    colnames_list = ['Query_name','Sequence_length', 'Average_protein_prediction', 'AR_position', 'Amino_acids_score']
+    colnames_list = [
+        'Query_name',
+        'Sequence_length', 
+        'Average_protein_prediction', 
+        'AR_position', 
+        'Amino_acids_score'
+        ]
     
     with open(save_path, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=';')
@@ -287,7 +344,12 @@ def save_amino_acid_pred_result_csv(save_path, result_list):
         
         # Write data rows
         for entry in result_list:
-            csv_writer.writerow([entry['prot_name'], len(entry['mean_list']), entry['All_sequence_pred'], entry['AR_list'], entry['mean_list']])
+            csv_writer.writerow(
+                [entry['prot_name'], 
+                 len(entry['mean_list']), 
+                 entry['All_sequence_pred'], 
+                 entry['AR_list'], 
+                 entry['mean_list']])
 
     print(f'{save_path} created successfully')
 
@@ -296,16 +358,33 @@ def save_amino_acid_pred_result_csv(save_path, result_list):
 
 
 # Display the prediction result by amino acids as a bar chart
-def drow_graph_result(aa_mean_confidence_list, plot_name = '', threshold_line = 0.5, display = False, save = ''):
+def drow_graph_result(
+        aa_mean_confidence_list: list, 
+        plot_name: str = '', 
+        threshold_line: float = 0.5, 
+        display: bool = False, 
+        save: str = ''
+        ):
     '''Drow a graph showing the mean confidence score for all the amino acids of the given list.
-        
-    Parameters
-    ----------
-        aa_mean_confidence_list (Array): The list of dictionary where the key is the 1 letter amino acid code and the value is the mean confidence score
-        plot_name (String): Specify the name the plot should take (Default = '').
-        threshold_line (Float): Give the value where to drow the threshold line. The value must be between 0 and 1. If 0, don't drow the line (Default = 0.5)
-        display (Boolean): if True, display one by one all the graphic results (Default = False)
-        save (String): give the specific file path where to save the created plots. if save = None, don't save the plots (Default = '')
+    
+    :param aa_mean_confidence_list: The list of dictionary where the key is the 1 letter amino acid 
+    code and the value is the mean confidence score
+    :type aa_mean_confidence_list: list 
+
+    :param plot_name: Specify the name the plot should take. If not provided, defaults to ''.
+    :type plot_name: str 
+
+    :param threshold_line:  Give the value where to drow the threshold line. The value must be 
+    between 0 and 1. If 0, don't drow the line. If not provided, defaults to 0.5
+    :type threshold_line: float 
+
+    :param display: If True, display one by one all the graphic results. 
+    If not provided, defaults to False. 
+    :type display: bool 
+
+    :param save: Give the specific file path where to save the created plots. 
+    if save = None, don't save the plots. If not provided, defaults to ''.
+    :type save: str 
     '''
     # clear plot in memory
     plt.clf()
@@ -337,16 +416,15 @@ def drow_graph_result(aa_mean_confidence_list, plot_name = '', threshold_line = 
 
 
 
-def get_running_mode(input_path):
+def get_running_mode(input_path: str):
     '''Select the runing mode depending on the input path: folder or file
-        
-    Parameters
-    ----------
-        input_path (String): The path of the input (file or folder)
-        
-    Returns
-    -------
-        (String): The running mode: on folder: will try all files of the folder (only on .fasta or .csv) or on one given file
+    
+    :param input_path: The path of the input (file or folder)
+    :type input_path: str 
+    
+    :return: The running mode: on folder: will try all files of the folder (only on .fasta or .csv) 
+    or on one given file.
+    :rtype: str
     '''
 
     if os.path.exists(input_path):
@@ -362,14 +440,19 @@ def get_running_mode(input_path):
         return None
 
 
-def check_args_None(value, args_name):
+
+def check_args_None(
+        value, 
+        args_name: str
+        ):
     '''Return error message if the given value is None
-        
-    Parameters
-    ----------
-        value (any): The given value, can be any type
-        args_name (String): The name of the parameter, used to edit the error message.
+    
+    :param value: The given value, can be any type
+    :type value: any
+    :param args_name: The name of the parameter, used to edit the error message.
+    :type args_name: str 
     '''
+    
     if value is None:
         error_message = f"{args_name} is None, please provide a valid value for this argument."
         raise ValueError(error_message)

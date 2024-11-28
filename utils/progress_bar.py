@@ -7,6 +7,7 @@ Valentin Gonay
 
 # External Import
 import time
+from typing import Union
 
 
 def print_loading_bar(
@@ -58,7 +59,7 @@ def print_loading_bar(
 
 
 
-def convert_sec_to_hh_mm_ss(sec: int | float):
+def convert_sec_to_hh_mm_ss(sec: Union[int, float]):
     '''Convert a time in seconds into a hh:mm:ss formated time
     
     :param sec: The time in seconds

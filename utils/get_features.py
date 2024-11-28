@@ -255,8 +255,8 @@ def convert_AA_grp(
     elif classification == 'mode_3':
         return get_group_seq_2(sequence)
     else:
-        print("\nError, the given classification method is not recognized by the script. \
-              Please retry with one of the following method:\n'mode_1', 'mode_2', or 'mode_3'\n")
+        print("\nError, the given classification method is not recognized by the script.",
+              "Please retry with one of the following method:\n'mode_1', 'mode_2', or 'mode_3'\n")
         return None
     
 

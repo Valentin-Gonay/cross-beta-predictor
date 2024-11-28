@@ -56,8 +56,8 @@ def check_library(library: dict):
     except pkg_resources.DistributionNotFound:
         print(f"{dependency_name}"+RED+" is not installed."+RESET)
     except pkg_resources.VersionConflict:
-        print(f"{dependency_name} has a version conflict."+RED+" Please check your \
-              installations."+RESET)
+        print(f"{dependency_name} has a version conflict."+RED+" Please check your",
+              "installations."+RESET)
     except Exception as e:
         print(f"An error occurred: {e}")
 
@@ -107,8 +107,8 @@ def check_install():
             print(f"File {file_path}"+GREEN+ "\tOK"+RESET)
     
     if is_pb:
-        print("Some folder and/or file are missing, try redownload Cross-Beta RF \
-              predictor to fixe this problem...")
+        print("Some folder and/or file are missing, try redownload Cross-Beta RF",
+              "predictor to fixe this problem...")
     
     # Check library installation
     dependencies = [
@@ -134,8 +134,8 @@ def check_install():
         if not test_lib:
             is_pb = True
     if test_lib == 'wrong version':
-        print('Some dependencies are not installed in the correct version. Cross-Beta \
-              predictor may work but the results can be invalid')
+        print('Some dependencies are not installed in the correct version. Cross-Beta',
+              'predictor may work but the results can be invalid')
 
     return is_pb
     
