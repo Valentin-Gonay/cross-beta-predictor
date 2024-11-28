@@ -29,7 +29,7 @@ An online version is also provided at https://bioinfo.crbm.cnrs.fr/index.php?rou
 <a  name="Libraries-and-dependencies"></a>
 ## 1. Libraries and dependancies
 
-Cross-Beta predictor has been tested for `python 3.8`
+Cross-Beta predictor has been tested for `python 3.8` and `python 3.12`
 
 *  `pickle (v 0.0.12)`  *(installed by default since python 3.7)*
 *  `numpy (v 1.24.2)`
