@@ -169,17 +169,19 @@ Run the prediction on the fasta file available in `/example/Test_fasta.fasta`, c
 
 <a  name="Contact-us"></a>
 ## 5. Contact or cite us
-For any issue with the program, you can address a mail with `[Cross-Beta RF]` in subject to `valentin.gonay@crbm.cnrs.fr`
-
-**Citing Cross-Beta predictor:**
-
-Valentin Gonay, Michael P. Dunne, Javier Caceres-Delpiano, & Andrey V. Kajava. (2024). Developing machine-learning-based amyloid predictors with Cross-Beta DB. bioRxiv, 2024.02.12.579644. https://doi.org/10.1101/2024.02.12.579644
-
-**Citing IUPred3:**
-
-Gábor Erdős, Mátyás Pajkos, Zsuzsanna Dosztányi IUPred3 - improved prediction of protein disorder with a focus on specific user applications Nucleic Acids Research 2021, Submitted Bálint Mészáros, Gábor Erdős, Zsuzsanna Dosztányi (2018) IUPred2A: context-dependent prediction of protein disorder as a function of redox state and protein binding. Nucleic Acids Research;46(W1):W329-W337.
 
 ### Author
 Valentin Gonay
+
 [GitHub](https://github.com/Valentin-Gonay)
+
+For any issue with the program, you can address a mail with `[Cross-Beta RF]` in subject to `valentin.gonay@crbm.cnrs.fr`
+
+### Citing Cross-Beta predictor
+
+Valentin Gonay, Michael P. Dunne, Javier Caceres-Delpiano, & Andrey V. Kajava. (2024). Developing machine-learning-based amyloid predictors with Cross-Beta DB. bioRxiv, 2024.02.12.579644. https://doi.org/10.1101/2024.02.12.579644
+
+### Citing IUPred3
+
+Gábor Erdős, Mátyás Pajkos, Zsuzsanna Dosztányi IUPred3 - improved prediction of protein disorder with a focus on specific user applications Nucleic Acids Research 2021, Submitted Bálint Mészáros, Gábor Erdős, Zsuzsanna Dosztányi (2018) IUPred2A: context-dependent prediction of protein disorder as a function of redox state and protein binding. Nucleic Acids Research;46(W1):W329-W337.
 
