@@ -11,7 +11,7 @@ An online version is also provided at https://bioinfo.crbm.cnrs.fr/index.php?rou
 
 ## Table of content
 
-1. [Libraries and dependancies](#Libraries-and-dependancies)
+1. [Libraries and dependancies](#Libraries-and-dependencies)
 2. [Files](#Files)
     1. [`CB_RF_pred.py`, the main file](#CB_RF_pred.py)
     2. [`utils` folder](#utils)
@@ -27,7 +27,7 @@ An online version is also provided at https://bioinfo.crbm.cnrs.fr/index.php?rou
 
   
 <a  name="Libraries-and-dependencies"></a>
-## 1. Libraries and dependencies
+## 1. Libraries and dependancies
 
 Cross-Beta predictor has been tested for `python 3.8`
 
