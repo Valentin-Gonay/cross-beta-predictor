@@ -1,35 +1,35 @@
 # Cross-Beta_predictor
 
-Welcome to the Cross-Beta RF predictor, a Random Forest based predictor trained to identify naturally occuring cross-beta forming amyloids. While this algorithm has been trained against no-forming disordered protein regions, it also has shown very good results in making the difference between regular protein and amyloids.
+Welcome to the Cross-Beta RF predictor, an Extratrees-based predictor trained to identify naturally occurring cross-beta-forming amyloids. While this algorithm has been trained against no-forming disordered protein regions, it also has shown very good results in making the difference between regular proteins and amyloids.
 
-This is a version usable with command lines and use multiprocessing. Below is a description of all the argument you can use to run it as well as the different conditions to make it work.
+This is a version usable with command lines and uses multiprocessing. Below is a description of all the arguments you can use to run it as well as the different conditions to make it work.
 
-Most used packages are already gived when installing python, however, some of them might need to be updated or installed.
+Most used packages are already given when installing Python, however, some of them might need to be updated or installed.
 
 An online version is also provided at https://bioinfo.crbm.cnrs.fr/index.php?route=tools&tool=35.
 
 
 ## Table of content
 
-1. [Libraries and dependances](#Libraries-and-dependances)
+1. [Libraries and dependancies](#Libraries-and-dependancies)
 2. [Files](#Files)
     1. [`CB_RF_pred.py`, the main file](#CB_RF_pred.py)
     2. [`utils` folder](#utils)
 3. [Arguments and how to use the Cross-Beta RF pred with command lines](#Arguments)
     1. [Options](#options)
     2. [Usage](#usage)
-4. [Example of utilisation](#Example-of-utilisation)
+4. [Example of utilization](#Example-of-utilisation)
     1. [Check the installation of Cross-Beta RF predictor](#check-install)
-    2. [Run program with a single protein sequence](#prot-sequence)
-    3. [Run program with a csv file](#csv)
-    4. [Run program with a fasta file (work also for multifasta)](#fasta)
-5. [Contact or citing us](#Contact-us)
+    2. [Run the program with a single protein sequence](#prot-sequence)
+    3. [Run the program with a CSV file](#csv)
+    4. [Run the program with a fasta file (work also for multifasta)](#fasta)
+5. [Contact or cite us](#Contact-us)
 
   
-<a  name="Libraries-and-dependances"></a>
-## 1. Libraries and dependances
+<a  name="Libraries-and-dependencies"></a>
+## 1. Libraries and dependencies
 
-Cross-Beta predictor as been tested for `python 3.8`
+Cross-Beta predictor has been tested for `python 3.8`
 
 *  `pickle (v 0.0.12)`  *(installed by default since python 3.7)*
 *  `numpy (v 1.24.2)`
@@ -42,19 +42,22 @@ This work also uses a protein disorder predictor [IUPred3](https://iupred3.elte.
 
 Note that IUPred3 is under academic license.
 
-Once you have downloaded IUPRed3, you can put it in the `feature_creation` folder as:
+Once you have downloaded IUPRed3, you can put it in the `utils` folder as:
 
 ```
-- Cross-Beta_predictor_modelCreation
+- Cross-Beta_predictor
 |
-| - feature_creation
+| - utils
 |  |
 |  | - iupred3 <------
 |  |  |
 |  |  | ...
 |  |
-|  | aa_compo.py
-...
+|  | check_install.py
+|  | fold_pred.py
+|  | ...
+|
+| ...
 ```
 
   
@@ -64,19 +67,19 @@ Once you have downloaded IUPRed3, you can put it in the `feature_creation` folde
 <a  name="CB_RF_pred.py"></a>
 ### i. `CB_RF_pred.py`, the main file
 
-`CB_RF_pred.py`: The main python script. Will parse the given arguments by the commande line, verify them and use them to run the main function: `Cross_Beta_RF_pred()`. In this function, you will find the extraction of the given sequences and label in order to run the prediction function: `run_prediction_fasta_longseq()`. As some used algorithm only work with the 20 essential amino acids code, a regex filter `r"^[ARNDCQEGHILKMFPSTWYV]*$"`is applied on all the given sequences. **All the sequences that don't match this expression won't be predicted**
+`CB_RF_pred.py`: The main Python script. Will parse the given arguments by the command line, verify them and use them to run the main function: `Cross_Beta_RF_pred()`. In this function, you will find the extraction of the given sequences and label them to run the prediction function: `run_prediction_fasta_longseq()`. As some used algorithms only work with the 20 essential amino acids code, a regex filter `r"^[ARNDCQEGHILKMFPSTWYV]*$"`is applied on all the given sequences. **All the sequences that don't match this expression won't be predicted**
 
 
 <a  name="utils"></a>
 ### ii. `utils` folder
 
-1.  `utils.py`: the file where you will find sequence extraction function as well as function for drowing graphs and saving data in .csv format. You will also find function to detect if the script must run on a folder or on a file and function to check if a given argument has a None value.
+1.  `utils.py`: the file where you will find the sequence extraction function as well as the function for drawing graphs and saving data in .csv format. You will also find a function to detect if the script must run on a folder or on a file and a function to check if a given argument has a None value.
 
-2.  `fold_pred.py`: the file handling all the disorder prediction by using IUpred3.
+2.  `fold_pred.py`: the file handling all the disorder predictions by using IUpred3.
 
 3.  `get_features.py`: the file where all function generating and extracting features from amino acid sequences are.
 
-4.  `progress_bar.py`: the script where function are about generating a progress bar and computing the estimated remaining time.
+4.  `progress_bar.py`: the script where functions are about generating a progress bar and computing the estimated remaining time.
 
 <a  name="Arguments"></a>
 ## 3. Arguments and how to use the Cross-Beta RF pred with command lines
@@ -86,15 +89,15 @@ Once you have downloaded IUPRed3, you can put it in the `feature_creation` folde
 
 `-h`, `--help`: show this help message and exit
 
-`-ci`, `--check_install`: Check if all folders and files are correctly named and at the right place. Check if all dependances are importable
+`-ci`, `--check_install`: Check if all folders and files are correctly named and in the right place. Check if all dependencies are importable
 
-`-i INPUT`, `--input INPUT`: Input file path, can be file or folder or a amino acid sequence
+`-i INPUT`, `--input INPUT`: Input file path, can be file or folder or an amino acid sequence
 
-`-it INPUT_TYPE`, `--input_type INPUT_TYPE`: Define the input type (sequence, csv or fasta) (default: 'fasta').
+`-it INPUT_TYPE`, `--input_type INPUT_TYPE`: Define the input type (sequence, CSV or fasta) (default: 'fasta').
 
-`-nc NAME_COL`, `--name_col NAME_COL`: The name of the column containing the sequence ids. **Only needed if the input type is csv.**
+`-nc NAME_COL`, `--name_col NAME_COL`: The name of the column containing the sequence ids. **Only needed if the input type is CSV.**
 
-`-sc SEQ_COL`, `--seq_col SEQ_COL`: The name of the column containing the sequences. **Only needed if the input type is csv.**
+`-sc SEQ_COL`, `--seq_col SEQ_COL`: The name of the column containing the sequences. **Only needed if the input type is CSV.**
 
 `-t THRESHOLD`, `--threshold THRESHOLD`: Classification threshold. Must be between 0 and 1 (Default: 0.54)
 
@@ -106,13 +109,13 @@ Once you have downloaded IUPRed3, you can put it in the `feature_creation` folde
 <a  name="usage"></a>
 ### ii. Usage
 
-3 types of inputs are handled: path to a folder, path to a file or a amino acid sequence. In order to make the program work for all those cases, you must specify the type of the given input: `sequence`, `csv` or `fasta`. From this, if the input is a folder, the program will run on all the `csv` or `fasta` present in it.
+3 types of inputs are handled: path to a folder, path to a file, or an amino acid sequence. To make the program work for all those cases, you must specify the type of the given input: `sequence`, `CSV`, or `fasta`. From this, if the input is a folder, the program will run on all the `CSV` or `fasta` present in it.
 
-If the type is `csv`, you must enter the 2 additional arguments `-nc` (the name of the column where to find a sequence ID or equivalent) and `-sc` (the name of the column where to find the sequences to run the prediction on).
+If the type is `CSV`, you must enter the 2 additional arguments `-nc` (the name of the column where to find a sequence ID or equivalent) and `-sc` (the name of the column where to find the sequences to run the prediction on).
 
-Then you can choose a threshold value going from 0 to 1 for the prediction. All results strictly superior to the threshold will be condisidered as amyloid. The default and recommended threshold is set to 0.50 but a threshold of 0.55 has also shown good result when a large diversity of protein is tested.
+Then you can choose a threshold value going from 0 to 1 for the prediction. All results strictly superior to the threshold will be considered amyloidogenic. The default and recommended threshold is set to 0.54.
 
-Two output are generated, the csv result file name is determined by the `-o` argument (default set to prediction_result.csv). It contains the ID of the sequence, the length, the global prediction score, the amyloid regions (of minimum 15 amino acid with a score > threshold) and the detailed score for all the amino acids of the sequence. The other output optionaly generated is the graphic view of the amyloidogenicity score for all the amino acids of the sequence. The name of the graphic are based on the id of the corresponding sequence. This option can be activated or not by entering `True` or `False` to the `-g` argument (Default set to `False`).
+Two outputs are generated, the CSV result file name is determined by the `-o` argument (default set to prediction_result.csv). It contains the ID of the sequence, the length, the global prediction score, the amyloid regions (of minimum 15 amino acids with a score > threshold) and the detailed score for all the amino acids of the sequence. The other output optionally generated is the graphic view of the amyloidogenicity score for all the amino acids of the sequence. The name of the graphic is based on the id of the corresponding sequence. This option can be activated or not by entering `True` or `False` to the `-g` argument (Default set to `False`).
 
  
 <a  name="Example-of-utilisation"></a>
@@ -126,7 +129,7 @@ python3  CB_RF_pred.py  \
 ```
 
 <a  name="prot-sequence"></a>
-### ii. Run program with a single protein sequence
+### ii. Run the program with a single protein sequence
 
 ```bash
 python3  CB_RF_pred.py  \
@@ -135,11 +138,11 @@ python3  CB_RF_pred.py  \
 -g
 ```
 
-The given input is an amino acid sequence, and a result graphic will be drow. All results will be saved in the `/results/` directory in the `Cross-Beta_RF_pred` folder.
+The given input is an amino acid sequence and a result graphic will be drawn. All results will be saved in the `/results/` directory in the `Cross-Beta_RF_pred` folder.
 
   
-<a  name="csv"></a>
-### iii. Run program with a csv file
+<a  name="CSV"></a>
+### iii. Run the program with a CSV file
 
 ```bash
 python3  CB_RF_pred.py  \
@@ -149,11 +152,11 @@ python3  CB_RF_pred.py  \
 -sc  'Sequence'
 ```
 
-Run the prediction on the csv available in `/example/Test_csv.csv` without drawing result graph. For ces, label and sequence columns name must be specified using `-nc` and `-sc`.
+Run the prediction on the CSV available in `/example/Test_csv.csv` without drawing the result graph. For a CSV, label and sequence column names must be specified using `-nc` and `-sc`.
 
   
 <a  name="fasta"></a>
-### iv. Run program with a fasta file (work also for multifasta)
+### iv. Run the program with a fasta file (work also for multifasta)
 
 ```bash
 python3  CB_RF_pred.py  \
@@ -162,10 +165,10 @@ python3  CB_RF_pred.py  \
 -g  \
 -o  fasta_result.csv
 ```
-Run te prediction on the fasta file available in `/example/Test_fasta.fasta`, create graphic results and store the csv result file as 'fasta_result.csv'
+Run the prediction on the fasta file available in `/example/Test_fasta.fasta`, create graphic results and store the CSV result file as 'fasta_result.csv'
 
 <a  name="Contact-us"></a>
-## 5. Contact or citing us
+## 5. Contact or cite us
 For any issue with the program, you can address a mail with `[Cross-Beta RF]` in subject to `valentin.gonay@crbm.cnrs.fr`
 
 **Citing Cross-Beta predictor:**
