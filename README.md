@@ -152,7 +152,7 @@ python3  CB_RF_pred.py  \
 -sc  'Sequence'
 ```
 
-Run the prediction on the CSV available in `/example/Test_csv.csv` without drawing the result graph. For a CSV, label and sequence column names must be specified using `-nc` and `-sc`.
+Run the prediction on the CSV available in `/example/Test_csv.csv` without drawing the resulting graph. For a CSV, label and sequence column names must be specified using `-nc` and `-sc`.
 
   
 <a  name="fasta"></a>
@@ -178,4 +178,8 @@ Valentin Gonay, Michael P. Dunne, Javier Caceres-Delpiano, & Andrey V. Kajava. (
 **Citing IUPred3:**
 
 Gábor Erdős, Mátyás Pajkos, Zsuzsanna Dosztányi IUPred3 - improved prediction of protein disorder with a focus on specific user applications Nucleic Acids Research 2021, Submitted Bálint Mészáros, Gábor Erdős, Zsuzsanna Dosztányi (2018) IUPred2A: context-dependent prediction of protein disorder as a function of redox state and protein binding. Nucleic Acids Research;46(W1):W329-W337.
+
+### Author
+Valentin Gonay
+[GitHub](https://github.com/Valentin-Gonay)
 
