@@ -1,4 +1,4 @@
-# Cross-Beta_predictor
+# Cross-Beta predictor
 
 Welcome to the Cross-Beta RF predictor, an Extratrees-based predictor trained to identify naturally occurring cross-beta-forming amyloids. While this algorithm has been trained against no-forming disordered protein regions, it also has shown very good results in making the difference between regular proteins and amyloids.
 
