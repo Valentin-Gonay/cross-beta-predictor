@@ -13,7 +13,7 @@ import time
 import argparse
 import multiprocessing
 import numpy as np
-
+from typing import Optional
 
 # INTERN IMPORTS
 from utils import utils as utl
@@ -74,7 +74,7 @@ def run_prediction_fasta_longseq(
         feature_list: list, 
         classification: str, 
         pred_threshold: float = 0.5, 
-        length_threshold: int | None = None
+        length_threshold: Optional[int] = None
         ):
     '''Apply the prediction on a large sequence by cutting it in small fragment. Give a score for 
     each fragment. The final score for each amino acid correspond to the mean confidence.
@@ -369,9 +369,9 @@ def Cross_Beta_RF_pred(
         source_type: str, 
         classification_method: str = 'mode_3', 
         threshold: float = 0.5, 
-        label_col: str | None = None, 
-        sequence_col: str | None = None, 
-        window_size: int | None = None
+        label_col: Optional[str] = None, 
+        sequence_col: Optional[str] = None, 
+        window_size: Optional[int] = None
         ):
     ''' Make the amyloidogenicity prediction for the input source 
     (csv, fasta file or sequence in String format) using specific treshold. 
@@ -585,8 +585,8 @@ if __name__ == '__main__':
     if args.check_install:
         install_pb = ci.check_install()
         if install_pb:
-            print("Problem in installation, please update your libraries and make sure all files \
-                  and folder are present in the right place and correctly named")
+            print("Problem in installation, please update your libraries and make sure all files",
+                  "and folder are present in the right place and correctly named")
         else:
             print("No problem detected in the installation")
         exit()
