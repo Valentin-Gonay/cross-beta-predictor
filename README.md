@@ -1,6 +1,6 @@
 # Cross-Beta predictor
 
-Welcome to the Cross-Beta RF predictor, an Extratrees-based predictor trained to identify naturally occurring cross-beta-forming amyloids. While this algorithm has been trained against no-forming disordered protein regions, it also has shown very good results in making the difference between regular proteins and amyloids.
+Welcome to the Cross-Beta predictor, an Extratrees-based predictor trained to identify naturally occurring cross-beta-forming amyloids. While this algorithm has been trained against no-forming disordered protein regions, it also has shown very good results in making the difference between regular proteins and amyloids.
 
 This is a version usable with command lines and uses multiprocessing. Below is a description of all the arguments you can use to run it as well as the different conditions to make it work.
 
@@ -15,11 +15,11 @@ An online version is also provided at https://bioinfo.crbm.cnrs.fr/index.php?rou
 2. [Files](#Files)
     1. [`CB_RF_pred.py`, the main file](#CB_RF_pred.py)
     2. [`utils` folder](#utils)
-3. [Arguments and how to use the Cross-Beta RF pred with command lines](#Arguments)
+3. [Arguments and how to use the Cross-Beta predictor with command lines](#Arguments)
     1. [Options](#options)
     2. [Usage](#usage)
 4. [Example of utilization](#Example-of-utilisation)
-    1. [Check the installation of Cross-Beta RF predictor](#check-install)
+    1. [Check the installation of Cross-Beta predictor](#check-install)
     2. [Run the program with a single protein sequence](#prot-sequence)
     3. [Run the program with a CSV file](#csv)
     4. [Run the program with a fasta file (work also for multifasta)](#fasta)
@@ -82,7 +82,7 @@ Once you have downloaded IUPRed3, you can put it in the `utils` folder as:
 4.  `progress_bar.py`: the script where functions are about generating a progress bar and computing the estimated remaining time.
 
 <a  name="Arguments"></a>
-## 3. Arguments and how to use the Cross-Beta RF pred with command lines
+## 3. Arguments and how to use the Cross-Beta predictor with command lines
 
 <a  name="options"></a>
 ### i. Options
@@ -121,7 +121,7 @@ Two outputs are generated, the CSV result file name is determined by the `-o` ar
 <a  name="Example-of-utilisation"></a>
 ## 4. Example of utilisation
 <a  name="check-install"></a>
-### i. Check the installation of Cross-Beta RF predictor
+### i. Check the installation of Cross-Beta predictor
 
 ```bash
 python3  CB_RF_pred.py  \
