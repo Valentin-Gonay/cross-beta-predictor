@@ -107,7 +107,7 @@ def check_install():
             print(f"File {file_path}"+GREEN+ "\tOK"+RESET)
     
     if is_pb:
-        print("Some folder and/or file are missing, try redownload Cross-Beta RF",
+        print("Some folder and/or file are missing, try redownload Cross-Beta",
               "predictor to fixe this problem...")
     
     # Check library installation
